@@ -21,6 +21,7 @@ $ cairosvg
 $ brew install cairo
 $ brew install gawk
 ```
+*Note: GhostScript is used to generate EPS*
 More information on installation at [CairoSVG](https://cairosvg.org/documentation/).
 
 ## Conversion
