@@ -16,13 +16,13 @@ and test if there are unsatisfied dependency launching CairoSVG.
 ```
 $ cairosvg
 ```
+More information on installation at [CairoSVG](https://cairosvg.org/documentation/).
 *Note: on osX you may have to install cairo and gawk...*
 ```
 $ brew install cairo
 $ brew install gawk
 ```
 *Note: GhostScript is used to generate EPS*
-More information on installation at [CairoSVG](https://cairosvg.org/documentation/).
 
 ## Conversion
 In the Logo directory source the script:
