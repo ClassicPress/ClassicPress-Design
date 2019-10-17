@@ -31,13 +31,31 @@ for file in *.svg ; do
 	for width in $pngwidths; do
 		height=$(echo "scale=10; $svgheight * $width / $svgwidth +0.5 " | bc -l | awk '{$1=int($1)}1' )
 		destfile="${destdir}/${asset}-${width}x${height}.png"
-		cairosvg								\
-				--format		png				\
-				--output-width  $width			\
-				--output-height $height			\
-				--output 		$destfile		\
-				$file
+		cairosvg							\
+			--format		png				\
+			--output-width  $width			\
+			--output-height $height			\
+			--output 		$destfile		\
+			$file
 	done
+	
+	# Build PDF
+	destfile="${destdir}/${asset}.pdf"
+	cairosvg							\
+		--format		pdf				\
+		--output 		$destfile		\
+		$file
+	
+	# Build EPS using GhostScript
+	midfile="${destdir}/${asset}.ps"
+	destfile="${destdir}/${asset}.eps"
+	cairosvg							\
+		--format		ps				\
+		--output 		$midfile		\
+		$file
+	gs -dBATCH -dNOPAUSE -q -sDEVICE=eps2write -sOutputFile=$destfile $midfile
+	rm $midfile
+	
 	echo -n "X"
 done
 echo
@@ -45,5 +63,4 @@ if [ $count != $totalassets ]
 	then
 		echo "$count files processed. $totalassets expected. Please check."
 fi
-rm "$destdir/.temp"			
-
+rm "$destdir/.temp"

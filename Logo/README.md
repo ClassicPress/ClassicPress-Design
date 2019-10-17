@@ -24,7 +24,7 @@ $ brew install gawk
 More information on installation at [CairoSVG](https://cairosvg.org/documentation/).
 
 ## Conversion
-In the Logo directory:
+In the Logo directory source the script:
 ```
 $ . bin/convert-logos.sh
 ```
