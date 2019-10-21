@@ -19,14 +19,15 @@ $ cairosvg
 More information on installation at [CairoSVG](https://cairosvg.org/documentation/).
 
 ### The *EPS* conversion is based on *InkScape*.
+You can find the latest InkScape version [here](https://inkscape.org/it/).
 
 ### osX notes
-- You may have to install cairo and gawk.
+You may have to install cairo and gawk.
 ```
 $ brew install cairo
 $ brew install gawk
 ```
-- Make sure `/Applications/Inkscape.app/Contents/Resources/bin/` is in your path.
+Make sure `/Applications/Inkscape.app/Contents/Resources/bin/` is in your path.
 
 ## Conversion
 In the Logo directory source the script:
