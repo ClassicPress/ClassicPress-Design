@@ -21,7 +21,7 @@ More information on installation at [CairoSVG](https://cairosvg.org/documentatio
 ### The *EPS* conversion is based on *InkScape*.
 You can find the latest InkScape version [here](https://inkscape.org/it/).
 
-### osX notes
+### OsX notes
 You may have to install cairo and gawk.
 ```
 $ brew install cairo
