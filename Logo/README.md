@@ -3,7 +3,9 @@
 The main files are SVG ones.
 
 In the autogenerate folder you'll find automatically converted assets.
-You will also be noticed if some file has opened paths.
+Checks:
+- file has opened paths
+- title is SVG differs from file name
 
 # Automatic conversion
 ## Requirements
