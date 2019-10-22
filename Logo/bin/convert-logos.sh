@@ -19,10 +19,17 @@ grep -l -E ' d="[^"]*[^zZ]"' *.svg >"$destdir/.temp" &&  (
 	
 # Loop through SVG files 
 count=0;
+titleerrors="";
 echo -ne "------\r"
 for file in *.svg ; do
 	let "count++"
 	asset="${file%.*}"
+	
+	# Check for valid SVG title
+	svgtitle=$(awk 'BEGIN{IGNORECASE=1;FS="<title>|</title>";RS=EOF} {print $2}' $file)
+	if [ "$svgtitle" != "$asset" ]; then
+		titleerrors="${titleerrors}Title mismatch in ${file}, should be ${asset}, not $svgtitle\n"
+	fi
 	
 	# Get info from our SVG
 	svgwidth=$(gawk '{ match($0, /viewBox=" *([0-9\.]+) +([0-9\.]+) +([0-9\.]+) +([0-9\.]+) *"/,res) ;print res[3]}' $file)
@@ -51,4 +58,5 @@ if [ $count != $totalassets ]
 	then
 		echo "$count files processed. $totalassets expected. Please check."
 fi
+echo -ne $titleerrors
 rm "$destdir/.temp"
