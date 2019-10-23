@@ -20,7 +20,7 @@ grep -l -E ' d="[^"]*[^zZ]"' *.svg >"$destdir/.temp" &&  (
 # Loop through SVG files 
 count=0;
 titleerrors="";
-echo -ne "------\r"
+
 for file in *.svg ; do
 	let "count++"
 	asset="${file%.*}"
@@ -28,12 +28,11 @@ for file in *.svg ; do
 	# Check for valid SVG title
 	svgtitle=$(awk 'BEGIN{IGNORECASE=1;FS="<title>|</title>";RS=EOF} {print $2}' $file)
 	if [ "$svgtitle" != "$asset" ]; then
-		titleerrors="${titleerrors}Title mismatch in ${file}, should be ${asset}, not $svgtitle\n"
+		titleerrors="${titleerrors}Title mismatch in ${file}, should be ${asset}, not ${svgtitle}\n"
 	fi
 	
 	# Build PNG in their resolutions
 	for width in $pngwidths; do
-		height="NONE"
 		tempfile="${wd}/${destdir}/${asset}-${width}.png"
 		inkout=$(inkscape "${wd}/${file}" --export-width=$width --export-png=$tempfile)
 		height=$(echo $inkout | grep -o -E "exported to [0-9]+ x [0-9]+ pixels" | cut -d " " -f 5)
@@ -45,9 +44,8 @@ for file in *.svg ; do
 	destfile="${wd}/${destdir}/${asset}.pdf"
 	inkscape "${wd}/${file}" -A $destfile
 
-	echo -n "X"
 done
-echo
+
 if [ $count != $totalassets ]
 	then
 		echo "$count files processed. $totalassets expected. Please check."
