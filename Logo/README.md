@@ -11,19 +11,20 @@ The script checks that:
 - the paths are closed;
 - SVG title is file name (without extension).
 
+It generates raster versions (PNG) for each asset, PDF version and lint the original SVG.
+
 ## Conversion
-In the Logo directory source the script:
+In the Logo directory run the script:
 ```
-$ . bin/generate-assets.sh
+$ generate-assets.sh
 ```
 
 ## Requirements
 
-### The conversion script uses *InkScape*.
-You can find the latest InkScape version [here](https://inkscape.org/it/).
+- [InkScape](https://inkscape.org).
+- xmllint that is part of [libxml](http://www.xmlsoft.org).
 
 ### OsX notes
-- You may have to install cairo and gawk.
 - Make sure `/Applications/Inkscape.app/Contents/Resources/bin/` is in your path.
 
 
