@@ -16,7 +16,7 @@ It generates raster versions (PNG) for each asset, PDF version and lint the orig
 ## Conversion
 In the Logo directory run the script:
 ```
-$ generate-assets.sh
+$ bin/generate-assets.sh
 ```
 
 ## Requirements
