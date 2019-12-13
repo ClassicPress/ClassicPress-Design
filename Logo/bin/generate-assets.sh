@@ -45,7 +45,7 @@ for file in *.svg ; do
 	asset="${file%.*}"
 	# Build PNG in their resolutions
 	for width in $pngwidths; do
-		tempfile="${destdir}/${asset}-${width}.png"
+		tempfile="${destdir}/tmp-${asset}-${width}.png"
 		inkout=$(inkscape "${file}" --export-width=$width --export-png=$tempfile)
 		height=$(echo $inkout | grep -o -E "exported to [0-9]+ x [0-9]+ pixels" | cut -d " " -f 5)
 		destfile="${destdir}/${asset}-${width}x${height}.png"
