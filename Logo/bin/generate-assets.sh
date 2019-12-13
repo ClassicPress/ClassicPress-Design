@@ -46,13 +46,13 @@ for file in *.svg ; do
 	# Build PNG in their resolutions
 	for width in $pngwidths; do
 		tempfile="${destdir}/tmp-${asset}-${width}.png"
-		inkout=$(inkscape "${file}" --export-width=$width --export-png=$tempfile)
+		inkout=$(inkscape "${file}" --export-width=$width --export-png=$tempfile 2>&1)
 		height=$(echo $inkout | grep -o -E "exported to [0-9]+ x [0-9]+ pixels" | cut -d " " -f 5)
 		destfile="${destdir}/${asset}-${width}x${height}.png"
 		mv $tempfile $destfile
 	done
 	# Build PDF
 	destfile="${destdir}/${asset}.pdf"
-	inkscape "${file}" -A $destfile
+	inkscape "${file}" -A $destfile 2>/dev/null
 
 done
