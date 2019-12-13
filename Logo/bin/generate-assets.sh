@@ -19,7 +19,7 @@ if [ $all_found = N ]; then
 	exit 1
 fi
 
-#
+# Format and indent SVG files for easier review of changes
 for file in *.svg ; do
 	xmllint --format $file -o $file
 done
@@ -40,7 +40,7 @@ for file in *.svg ; do
 	fi
 done
 
-# Loop through SVG files 
+# Loop through SVG files
 for file in *.svg ; do
 	asset="${file%.*}"
 	# Build PNG in their resolutions
