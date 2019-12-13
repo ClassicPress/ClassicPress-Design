@@ -48,6 +48,11 @@ for file in *.svg ; do
 		tempfile="${destdir}/tmp-${asset}-${width}.png"
 		inkout=$(inkscape "${file}" --export-width=$width --export-png=$tempfile 2>&1)
 		height=$(echo "$inkout" | grep -o -E "exported to [0-9]+ x [0-9]+ pixels" | cut -d " " -f 5)
+		if [ -z "$height" ]; then
+			echo 'Image height not detected in inkscape output:'
+			echo "$inkout"
+			exit 1
+		fi
 		destfile="${destdir}/${asset}-${width}x${height}.png"
 		mv $tempfile $destfile
 	done
