@@ -37,7 +37,7 @@ for file in *.svg ; do
 	asset="${file%.*}"
 	svgtitle=$(grep -o -E '<title>([^<]*)</title>' "$file")
 	if [ "$svgtitle" != "<title>${asset}</title>" ]; then
-		echo "Error: mismatch in asset name and SVG title";
+		echo "Error: mismatch in asset name and SVG title: $file";
 		exit 1
 	fi
 done
