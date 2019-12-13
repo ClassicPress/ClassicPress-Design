@@ -54,10 +54,11 @@ for file in *.svg ; do
 			exit 1
 		fi
 		destfile="${destdir}/${asset}-${width}x${height}.png"
+		echo "$destfile"
 		mv $tempfile $destfile
 	done
 	# Build PDF
 	destfile="${destdir}/${asset}.pdf"
 	inkscape "${file}" -A $destfile 2>/dev/null
-
+	echo "$destfile"
 done
