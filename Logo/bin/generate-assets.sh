@@ -25,10 +25,12 @@ for file in *.svg ; do
 done
 
 # Check for opened vectors
-grep -q ' d="[^"]*[^zZ]"' *.svg &&  (
-	echo "Error: some file have open paths!";
-	exit 1
-)
+for file in *.svg ; do
+	if grep -q ' d="[^"]*[^zZ]"' "$file"; then
+		echo "Error: file has open paths: $file";
+		exit 1
+	fi
+done
 
 # Check for wrong titles in SVG
 for file in *.svg ; do
