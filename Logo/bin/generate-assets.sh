@@ -21,7 +21,7 @@ fi
 
 # Format and indent SVG files for easier review of changes
 for file in *.svg ; do
-	xmllint --format $file -o $file
+	XMLLINT_INDENT="$(echo -e '\t')" xmllint --format $file -o $file
 done
 
 # Check for opened vectors
