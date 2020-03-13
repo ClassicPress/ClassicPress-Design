@@ -1,0 +1,20 @@
+{
+	"classicpress-logo-wordmark-gradient-on-transparent.svg": {
+		"description": "Wordmark logo, colored on transparent background"
+	},
+	"classicpress-logo-wordmark-white-on-transparent.svg": {
+		"description": "Wordmark logo, white on transparent background"
+	},
+	"classicpress-logo-coin-gradient-on-white.svg": {
+		"description": "Coin logo, colored feather on white background"
+	},
+	"classicpress-logo-coin-white-on-gradient.svg": {
+		"description": "Coin logo, white feather on colored gradient background"
+	},
+	"classicpress-logo-feather-gradient-on-transparent.svg": {
+		"description": "Feather icon, colored on transparent background"
+	},
+	"classicpress-logo-feather-white-on-transparent.svg": {
+		"description": "Feather icon, white on transparent background"
+	}
+}
